@@ -10,21 +10,6 @@ HábitosApp permite a los usuarios registrarse, crear hábitos personales, marca
 
 ---
 
-## Stack tecnológico
-
-| Tecnología | Versión | Uso |
-|---|---|---|
-| Node.js | v18+ | Entorno de ejecución |
-| Express | 4.x | Framework HTTP |
-| PostgreSQL | 14+ | Base de datos relacional |
-| pg (node-postgres) | 8.x | Driver de conexión |
-| jsonwebtoken | 9.x | Autenticación JWT |
-| bcryptjs | 2.x | Hash de contraseñas |
-| dotenv | 16.x | Variables de entorno |
-| HTML + CSS + JS | — | Frontend (Vanilla) |
-
----
-
 ## Estructura del proyecto
 
 ```
@@ -69,10 +54,10 @@ npm install
 
 ### 3. Configurar variables de entorno
 
-Copiar el archivo de ejemplo y completar los datos:
+Copiar el archivo y completar los datos:
 
 ```bash
-cp .env.example .env
+cp .env
 ```
 
 Editar `.env`:
@@ -81,18 +66,18 @@ Editar `.env`:
 PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=habitos_db
+DB_NAME=habitospersonales
 DB_USER=postgres
-DB_PASSWORD=tu_password
-JWT_SECRET=una_clave_larga_y_secreta
+DB_PASSWORD=*********
+JWT_SECRET=clave_larga_y_secreta
 JWT_EXPIRES_IN=24h
 ```
 
 ### 4. Crear la base de datos en PostgreSQL
 
 ```bash
-psql -U postgres -c "CREATE DATABASE habitos_db;"
-psql -U postgres -d habitos_db -f database.sql
+psql -U postgres -c "CREATE DATABASE habitosperosnales;"
+psql -U postgres -d habitosperosnales -f database.sql
 ```
 
 ### 5. Iniciar el servidor
@@ -105,22 +90,6 @@ Abrir el navegador en: [http://localhost:3000](http://localhost:3000)
 
 ---
 
-## Endpoints de la API
-
-| Método | Ruta | Descripción | Auth |
-|---|---|---|---|
-| POST | `/api/auth/register` | Registro de usuario | No |
-| POST | `/api/auth/login` | Login, devuelve JWT | No |
-| GET | `/api/habitos` | Listar hábitos del usuario | Sí |
-| GET | `/api/habitos/:id` | Obtener un hábito por ID | Sí |
-| POST | `/api/habitos` | Crear hábito (usa transacción) | Sí |
-| PUT | `/api/habitos/:id` | Actualizar hábito | Sí |
-| DELETE | `/api/habitos/:id` | Eliminar hábito | Sí |
-| POST | `/api/habitos/:id/completar` | Registrar cumplimiento (usa SP) | Sí |
-| GET | `/api/habitos/:id/registros` | Historial de registros | Sí |
-| GET | `/api/habitos/categorias` | Listar categorías | Sí |
-
----
 
 ## Diseño de la base de datos
 
