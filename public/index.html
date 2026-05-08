@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+  <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HábitosApp</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <!-- ========== PANTALLA: LOGIN ========== -->
+    <div id="view-login" class="view active">
+      <div class="auth-card">
+        <div class="auth-logo">✦</div>
+        <h1 class="auth-title">HábitosApp</h1>
+        <p class="auth-sub">Construí tu mejor versión, un día a la vez.</p>
+
+        <div id="login-error" class="msg-error hidden"></div>
+
+        <label>Email</label>
+        <input type="email" id="login-email" placeholder="tu@email.com" />
+
+        <label>Contraseña</label>
+        <input type="password" id="login-password" placeholder="••••••••" />
+
+        <button class="btn-primary" onclick="doLogin()">Iniciar sesión</button>
+        <p class="auth-switch">¿No tenés cuenta? <a onclick="showView('register')">Registrate</a></p>
+      </div>
+    </div>
+
+    <!-- ========== PANTALLA: REGISTRO ========== -->
+    <div id="view-register" class="view">
+      <div class="auth-card">
+        <div class="auth-logo">✦</div>
+        <h1 class="auth-title">Crear cuenta</h1>
+        <p class="auth-sub">Empezá a trackear tus hábitos hoy.</p>
+
+        <div id="register-error" class="msg-error hidden"></div>
+        <div id="register-ok"    class="msg-ok hidden"></div>
+
+        <label>Nombre</label>
+        <input type="text" id="reg-nombre" placeholder="Tu nombre" />
+
+        <label>Email</label>
+        <input type="email" id="reg-email" placeholder="tu@email.com" />
+
+        <label>Contraseña</label>
+        <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" />
+
+        <button class="btn-primary" onclick="doRegister()">Registrarse</button>
+        <p class="auth-switch">¿Ya tenés cuenta? <a onclick="showView('login')">Iniciá sesión</a></p>
+      </div>
+    </div>
+
+    <!-- ========== PANTALLA: DASHBOARD ========== -->
+    <div id="view-dashboard" class="view">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-logo">✦ HábitosApp</div>
+        <nav>
+          <button class="nav-btn active" onclick="showTab('tab-habitos', this)">📋 Mis Hábitos</button>
+          <button class="nav-btn" onclick="showTab('tab-nuevo', this)">➕ Nuevo Hábito</button>
+        </nav>
+        <div class="sidebar-user">
+          <span id="sidebar-nombre"></span>
+          <button class="btn-logout" onclick="doLogout()">Salir</button>
+        </div>
+      </aside>
+
+      <!-- Contenido principal -->
+      <main class="main-content">
+
+        <!-- TAB: Lista de hábitos -->
+        <div id="tab-habitos" class="tab active">
+          <div class="tab-header">
+            <h2>Mis Hábitos</h2>
+            <button class="btn-refresh" onclick="cargarHabitos()">↺ Actualizar</button>
+          </div>
+          <div id="msg-dashboard" class="msg-error hidden"></div>
+          <div id="lista-habitos" class="habitos-grid"></div>
+        </div>
+
+        <!-- TAB: Nuevo hábito / Editar hábito -->
+        <div id="tab-nuevo" class="tab">
+          <h2 id="form-titulo">Nuevo Hábito</h2>
+          <div id="form-error" class="msg-error hidden"></div>
+          <div id="form-ok"    class="msg-ok hidden"></div>
+
+          <input type="hidden" id="habito-id" />
+
+          <label>Nombre del hábito *</label>
+          <input type="text" id="habito-nombre" placeholder="Ej: Meditar 10 minutos" />
+
+          <label>Descripción</label>
+          <textarea id="habito-descripcion" rows="3" placeholder="Descripción opcional..."></textarea>
+
+          <label>Categoría *</label>
+          <select id="habito-categoria"></select>
+
+          <label>Frecuencia</label>
+          <select id="habito-frecuencia">
+            <option value="diario">Diario</option>
+            <option value="semanal">Semanal</option>
+            <option value="mensual">Mensual</option>
+          </select>
+
+          <label>Meta (días)</label>
+          <input type="number" id="habito-meta" value="30" min="1" max="365" />
+
+          <label>Fecha de inicio</label>
+          <input type="date" id="habito-fecha" />
+
+          <div class="form-btns">
+            <button class="btn-primary" onclick="guardarHabito()">Guardar Hábito</button>
+            <button class="btn-secondary" onclick="cancelarForm()">Cancelar</button>
+          </div>
+        </div>
+
+      </main>
+    </div>
+
+    <!-- Modal: Historial de registros -->
+    <div id="modal-historial" class="modal-overlay hidden">
+      <div class="modal-box">
+        <div class="modal-header">
+          <h3 id="modal-titulo">Historial</h3>
+          <button onclick="cerrarModal()">✕</button>
+        </div>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+  </html>
