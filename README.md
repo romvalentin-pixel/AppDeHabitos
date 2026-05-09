@@ -42,7 +42,7 @@ tp3-app/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/tu-usuario/tp3-habitos.git
+git clone https://github.com/romvalentin-pixel/AppDeHabitos.git
 cd tp3-habitos
 ```
 
@@ -66,8 +66,8 @@ Editar `.env`:
 PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
-DB_NAME=habitospersonales
-DB_USER=postgres
+DB_NAME=NombreDeBaseDeDatos
+DB_USER=NombreDeUsuarioDeDB
 DB_PASSWORD=*********
 JWT_SECRET=clave_larga_y_secreta
 JWT_EXPIRES_IN=24h
