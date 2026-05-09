@@ -43,7 +43,7 @@ tp3-app/
 
 ```bash
 git clone https://github.com/romvalentin-pixel/AppDeHabitos.git
-cd tp3-habitos
+cd AppDeHabitos
 ```
 
 ### 2. Instalar dependencias
