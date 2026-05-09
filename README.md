@@ -197,7 +197,7 @@ Un trigger es una acción automática que la base de datos ejecuta cuando ocurre
 
 ---
 
-## Autor
+## Autor: Romano Jesus Valentin
 
 Trabajo Práctico N°3 – Programación III  
 Tecnicatura Superior en Programación
