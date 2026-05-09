@@ -418,10 +418,18 @@ function hoy() {
   return new Date().toISOString().split('T')[0];
 }
 
-function formatFecha(iso) {
-  if (!iso) return '';
-  const d = new Date(iso + 'T00:00:00');
-  return d.toLocaleDateString('es-AR', { day: '2-digit', month: 'short', year: 'numeric' });
+function formatFecha(fecha) {
+  if (!fecha) return '';
+
+  const d = new Date(fecha);
+
+  if (isNaN(d.getTime())) return 'Fecha inválida';
+
+  return d.toLocaleDateString('es-AR', {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric'
+  });
 }
 
 // ── Botón "Nuevo Hábito" en sidebar ───────────────────────────
